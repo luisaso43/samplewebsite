@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Miami Realty - Luxury Real Estate</title>
+    <title>Elite Miami Realty - Luxury Properties & Exceptional Service</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-black: #0a0a0a;
-            --secondary-black: #1a1a1a;
-            --accent-gray: #2a2a2a;
-            --light-gray: #f8f8f8;
-            --medium-gray: #888888;
-            --dark-gray: #333333;
-            --gold-accent: #d4af37;
-            --platinum: #e5e4e2;
-            --white: #ffffff;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-gold: #D4AF37;
+            --accent-gold: #F4E4BC;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2D2D2D;
+            --light-gray: #6B6B6B;
+            --text-light: #E5E5E5;
+            --pure-black: #000000;
+            --white: #FFFFFF;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pure-black);
+            color: var(--text-light);
             line-height: 1.6;
-            color: var(--white);
-            background-color: var(--primary-black);
             overflow-x: hidden;
         }
 
-        /* Premium Typography */
-        .serif-font {
-            font-family: 'Playfair Display', serif;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Navigation */
@@ -42,18 +43,19 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 15px 0;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
         }
 
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,41 +63,40 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--gold-accent);
+            color: var(--primary-gold);
+            text-decoration: none;
             letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 40px;
         }
 
         .nav-links a {
+            color: var(--text-light);
             text-decoration: none;
-            color: var(--white);
             font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
             transition: all 0.3s ease;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--gold-accent);
+            color: var(--primary-gold);
+            transform: translateY(-2px);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -8px;
+            bottom: -5px;
             left: 0;
-            background: var(--gold-accent);
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
             transition: width 0.3s ease;
         }
 
@@ -106,8 +107,8 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23000000;stop-opacity:1" /><stop offset="100%" style="stop-color:%23333333;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23grad1)"/><polygon points="0,800 400,600 800,650 1200,500 1200,800" fill="%23111111" opacity="0.7"/><polygon points="0,600 300,400 600,450 900,300 1200,350 1200,600" fill="%23222222" opacity="0.5"/></svg>');
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(26,26,26,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="%23111"><rect width="1920" height="1080" fill="%23000"/><polygon points="0,0 1920,0 1920,400 0,600" fill="%23111" opacity="0.3"/></svg>');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -118,407 +119,248 @@
         }
 
         .hero-content {
-            max-width: 900px;
-            padding: 0 2rem;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--gold-accent);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
 
-        .hero p {
+        .hero-subtitle {
             font-size: 1.3rem;
-            margin-bottom: 3rem;
-            color: var(--platinum);
+            color: var(--text-light);
+            margin-bottom: 40px;
             font-weight: 300;
-            line-height: 1.6;
+            letter-spacing: 0.5px;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
-            color: var(--primary-black);
+            background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+            color: var(--pure-black);
+            padding: 18px 40px;
             text-decoration: none;
-            border-radius: 0;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
 
-        /* Geometric decorations */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            border: 2px solid var(--gold-accent);
-            opacity: 0.3;
-            animation: rotate 20s linear infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 15%;
-            left: 8%;
-            width: 60px;
-            height: 60px;
-            border: 1px solid var(--platinum);
-            opacity: 0.2;
-            animation: rotate 15s linear infinite reverse;
-        }
-
-        /* Sections */
+        /* Section Styles */
         .section {
-            padding: 8rem 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            padding: 100px 0;
+            position: relative;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 3rem;
             text-align: center;
-            margin-bottom: 4rem;
-            color: var(--white);
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--gold-accent);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--secondary-black);
+            margin-bottom: 60px;
+            color: var(--primary-gold);
             position: relative;
         }
 
-        .about::before {
+        .section-title::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+            border-radius: 2px;
         }
 
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            gap: 60px;
             align-items: center;
         }
 
         .about-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--platinum);
+            color: var(--text-light);
         }
 
         .about-text h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-weight: 300;
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
         }
 
         .about-image {
-            position: relative;
-            height: 500px;
-            background: linear-gradient(135deg, var(--accent-gray), var(--dark-gray));
+            background: var(--medium-gray);
+            height: 400px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3rem;
+            color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         /* Services Section */
         .services {
-            background: var(--primary-black);
+            background: var(--dark-gray);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .service-card {
-            background: var(--secondary-black);
-            padding: 3rem;
-            border: 1px solid var(--accent-gray);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
-            transition: left 0.6s;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
+            background: var(--medium-gray);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-accent);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            color: var(--primary-black);
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
         }
 
         .service-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
         }
 
         .service-card p {
-            color: var(--platinum);
+            color: var(--text-light);
             line-height: 1.6;
-            font-weight: 300;
         }
 
         /* Contact Section */
-        .contact {
-            background: var(--secondary-black);
-            position: relative;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
-        }
-
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            gap: 80px;
             align-items: start;
         }
 
         .contact-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            color: var(--platinum);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            font-weight: 300;
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 30px;
         }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--accent-gray);
-            border-left: 3px solid var(--gold-accent);
+            align-items: center;
+            margin-bottom: 25px;
+            color: var(--text-light);
         }
 
-        .contact-item-icon {
-            margin-right: 1.5rem;
+        .contact-item i {
             font-size: 1.5rem;
-            color: var(--gold-accent);
+            color: var(--primary-gold);
+            margin-right: 20px;
             width: 30px;
         }
 
-        .contact-item-content strong {
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .contact-item-content {
-            color: var(--platinum);
-        }
-
         .contact-form {
-            background: var(--accent-gray);
-            padding: 3rem;
-            border: 1px solid var(--dark-gray);
+            background: var(--medium-gray);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 8px;
+            color: var(--primary-gold);
             font-weight: 500;
-            color: var(--white);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
         }
 
         .form-group input,
-        .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 1.2rem;
-            border: 1px solid var(--dark-gray);
-            background: var(--secondary-black);
-            color: var(--white);
+            padding: 15px;
+            background: var(--dark-gray);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            color: var(--text-light);
             font-size: 1rem;
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
         }
 
         .form-group input:focus,
-        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--gold-accent);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
         .form-group textarea {
-            height: 140px;
             resize: vertical;
+            min-height: 120px;
         }
 
         .submit-btn {
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
-            color: var(--primary-black);
+            background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+            color: var(--pure-black);
+            padding: 15px 40px;
             border: none;
-            font-size: 1rem;
+            border-radius: 50px;
             font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+            transition: all 0.3s ease;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         /* Footer */
         footer {
-            background: var(--primary-black);
-            border-top: 1px solid var(--accent-gray);
+            background: var(--pure-black);
             text-align: center;
-            padding: 3rem 0;
-        }
-
-        footer p {
-            color: var(--medium-gray);
-            font-weight: 300;
+            padding: 40px 0;
+            border-top: 1px solid var(--dark-gray);
         }
 
         /* Animations */
@@ -533,105 +375,97 @@
             }
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.8rem;
-            }
-        }
-
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
 
-            .hero p {
+            .hero-subtitle {
                 font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
             }
 
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 40px;
             }
 
-            .section-title {
-                font-size: 2.2rem;
+            .container {
+                padding: 0 15px;
             }
+        }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
 
-            .section {
-                padding: 5rem 0;
-            }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-gold);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Elite Miami</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">Elite Miami Realty</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-subtitle">Luxury Real Estate</div>
-            <h1 class="serif-font">Miami's Premier Property Experience</h1>
-            <p>Discover extraordinary properties in Miami's most exclusive neighborhoods with unparalleled service and expertise</p>
-            <a href="#contact" class="cta-button">Begin Your Journey</a>
+            <h1>Luxury Miami Real Estate</h1>
+            <p class="hero-subtitle">Discover exceptional properties in Miami's most prestigious neighborhoods with personalized, white-glove service</p>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
+    <section id="about" class="section">
         <div class="container">
-            <div class="section-subtitle fade-in">Excellence</div>
-            <h2 class="section-title fade-in">About Elite Miami</h2>
+            <h2 class="section-title">About Us</h2>
             <div class="about-content">
-                <div class="about-text fade-in">
-                    <h3>Redefining Luxury Real Estate</h3>
-                    <p>For over two decades, Elite Miami has been the trusted name in luxury real estate, representing the most discerning clients and prestigious properties in South Florida. Our commitment to excellence, discretion, and personalized service has established us as the premier choice for luxury real estate transactions.</p>
-                    <p>We specialize in ultra-high-net-worth clients, offering bespoke services that go beyond traditional real estate. From private viewings to comprehensive market intelligence, we provide an unmatched level of sophistication and professionalism.</p>
-                    <p>Our exclusive network and deep market knowledge ensure that our clients have access to the most coveted properties and investment opportunities in Miami's dynamic luxury market.</p>
+                <div class="about-text">
+                    <h3>Your Premier Miami Real Estate Partner</h3>
+                    <p>With over a decade of experience in Miami's luxury real estate market, we specialize in connecting discerning clients with extraordinary properties. Our deep understanding of Miami's diverse neighborhoods, from Brickell's urban sophistication to Coral Gables' Mediterranean charm, ensures you find the perfect match for your lifestyle.</p>
+                    <br>
+                    <p>We pride ourselves on delivering unparalleled service, market expertise, and personalized attention to every client. Whether you're seeking a waterfront penthouse, a historic estate, or an investment property, we're committed to exceeding your expectations at every step of your real estate journey.</p>
                 </div>
-                <div class="about-image fade-in">
-                    <div style="color: var(--gold-accent);">🏛️</div>
+                <div class="about-image">
+                    <i class="fas fa-building"></i>
                 </div>
             </div>
         </div>
@@ -640,117 +474,97 @@
     <!-- Services Section -->
     <section id="services" class="section services">
         <div class="container">
-            <div class="section-subtitle fade-in">Excellence</div>
-            <h2 class="section-title fade-in">Our Services</h2>
+            <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏠</div>
-                    <h3>Luxury Residential Sales</h3>
-                    <p>Representing the finest estates, penthouses, and luxury condominiums across Miami-Dade County. Expert pricing strategies and marketing for properties exceeding $1 million.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Luxury Home Sales</h3>
+                    <p>Expert guidance through buying and selling Miami's finest residential properties, from oceanfront condos to gated community estates.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">💼</div>
-                    <h3>Investment Advisory</h3>
-                    <p>Strategic investment guidance for high-net-worth individuals seeking to build prestigious real estate portfolios in Miami's most appreciating markets.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Properties</h3>
+                    <p>Strategic investment advice and property acquisition services to maximize your real estate portfolio returns in Miami's dynamic market.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🌊</div>
-                    <h3>Waterfront Estates</h3>
-                    <p>Exclusive representation of Miami's most coveted waterfront properties, from Biscayne Bay mansions to oceanfront penthouses in prestigious buildings.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Property Management</h3>
+                    <p>Comprehensive property management services ensuring your investments are maintained, rented, and optimized for maximum profitability.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔐</div>
-                    <h3>Private Client Services</h3>
-                    <p>Confidential representation for celebrities, executives, and ultra-high-net-worth individuals requiring discretion and specialized service protocols.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Market Analysis</h3>
+                    <p>In-depth market research and comparative analysis to help you make informed decisions in Miami's competitive real estate landscape.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📊</div>
-                    <h3>Market Intelligence</h3>
-                    <p>Comprehensive market analysis and forecasting for luxury segments, providing clients with strategic insights for informed decision-making.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Relocation Services</h3>
+                    <p>Complete relocation assistance for clients moving to Miami, including neighborhood tours, school district guidance, and lifestyle matching.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">⭐</div>
-                    <h3>Concierge Services</h3>
-                    <p>Full-service lifestyle management including property management, interior design coordination, and relocation services for seamless transitions.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>International Clients</h3>
+                    <p>Specialized services for international buyers, including visa guidance, financing options, and cultural transition support.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section">
         <div class="container">
-            <div class="section-subtitle fade-in">Connect</div>
-            <h2 class="section-title fade-in">Contact Elite Miami</h2>
+            <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h3>Exclusive Consultation</h3>
-                    <p>Schedule a private consultation to discuss your luxury real estate needs. Our team provides personalized service with the utmost discretion and professionalism.</p>
-                    
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
                     <div class="contact-item">
-                        <div class="contact-item-icon">📞</div>
-                        <div class="contact-item-content">
-                            <strong>Private Line</strong><br>
-                            (305) 555-ELITE
-                        </div>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (305) 555-0123</span>
                     </div>
-                    
                     <div class="contact-item">
-                        <div class="contact-item-icon">✉️</div>
-                        <div class="contact-item-content">
-                            <strong>Email</strong><br>
-                            concierge@elitemiami.com
-                        </div>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@elitemiamirealty.com</span>
                     </div>
-                    
                     <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <div class="contact-item-content">
-                            <strong>Private Office</strong><br>
-                            701 Brickell Avenue, Suite 1550<br>
-                            Miami, FL 33131
-                        </div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1234 Brickell Avenue, Miami, FL 33131</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Fri: 9:00 AM - 7:00 PM<br>Sat - Sun: 10:00 AM - 5:00 PM</span>
                     </div>
                 </div>
-                
-                <div class="contact-form fade-in">
-                    <form action="https://formspree.io/f/your-form-id" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="interest">Service Interest</label>
-                            <select id="interest" name="interest">
-                                <option value="">Select Service</option>
-                                <option value="luxury-buying">Luxury Property Acquisition</option>
-                                <option value="luxury-selling">Luxury Property Sale</option>
-                                <option value="investment">Investment Advisory</option>
-                                <option value="waterfront">Waterfront Properties</option>
-                                <option value="private-client">Private Client Services</option>
-                                <option value="consultation">Market Consultation</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Please describe your luxury real estate requirements..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Private Message</button>
-                    </form>
-                </div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your real estate needs..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -758,25 +572,27 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Elite Miami Realty. All rights reserved. | Licensed Real Estate Brokerage | Equal Housing Opportunity</p>
+            <p>&copy; 2025 Elite Miami Realty. All rights reserved. | Licensed Real Estate Professionals</p>
         </div>
     </footer>
 
     <!-- Chatbase Script -->
     <script>
-        window.embeddedChatbotConfig = {
-            chatbotId: "4ik5fb5zi5ndf70kuy4ec7op5t0g5u3a", // Replace with your actual Chatbase chatbot ID
-            domain: "www.chatbase.co"
-        }
-    </script>
-    <script
-        src="https://www.chatbase.co/embed.min.js"
-        chatbotId="4ik5fb5zi5ndf70kuy4ec7op5t0g5u3a"
-        domain="www.chatbase.co"
-        defer>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="YAW1EKPS7at0s4HABzk2l";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
 
+    <!-- Custom JavaScript -->
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -791,57 +607,41 @@
             });
         });
 
-        // Scroll animations
+        // Form submission feedback
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Re-enable button after 3 seconds (in case of error)
+            setTimeout(() => {
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+
+        // Add intersection observer for fade-in animations
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Enhanced navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(10, 10, 10, 0.98)';
-                nav.style.boxShadow = '0 2px 30px rgba(212, 175, 55, 0.1)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-
-        // Form submission handling with premium feedback
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            const submitBtn = form.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending Message...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
         });
     </script>
 </body>
