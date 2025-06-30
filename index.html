@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Miami Realty - Luxury Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --accent-gray: #2a2a2a;
+            --light-gray: #f8f8f8;
+            --medium-gray: #888888;
+            --dark-gray: #333333;
+            --gold-accent: #d4af37;
+            --platinum: #e5e4e2;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background-color: var(--primary-black);
+            overflow-x: hidden;
+        }
+
+        /* Premium Typography */
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -8px;
+            left: 0;
+            background: var(--gold-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23000000;stop-opacity:1" /><stop offset="100%" style="stop-color:%23333333;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23grad1)"/><polygon points="0,800 400,600 800,650 1200,500 1200,800" fill="%23111111" opacity="0.7"/><polygon points="0,600 300,400 600,450 900,300 1200,350 1200,600" fill="%23222222" opacity="0.5"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gold-accent);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--platinum);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
+            color: var(--primary-black);
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Geometric decorations */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--gold-accent);
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            left: 8%;
+            width: 60px;
+            height: 60px;
+            border: 1px solid var(--platinum);
+            opacity: 0.2;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        /* Sections */
+        .section {
+            padding: 8rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--white);
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary-black);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--platinum);
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent-gray), var(--dark-gray));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--primary-black);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--secondary-black);
+            padding: 3rem;
+            border: 1px solid var(--accent-gray);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--primary-black);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--platinum);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--secondary-black);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: var(--platinum);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-gray);
+            border-left: 3px solid var(--gold-accent);
+        }
+
+        .contact-item-icon {
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+            width: 30px;
+        }
+
+        .contact-item-content strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .contact-item-content {
+            color: var(--platinum);
+        }
+
+        .contact-form {
+            background: var(--accent-gray);
+            padding: 3rem;
+            border: 1px solid var(--dark-gray);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid var(--dark-gray);
+            background: var(--secondary-black);
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--gold-accent), #b8860b);
+            color: var(--primary-black);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            border-top: 1px solid var(--accent-gray);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            color: var(--medium-gray);
+            font-weight: 300;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Elite Miami</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Luxury Real Estate</div>
+            <h1 class="serif-font">Miami's Premier Property Experience</h1>
+            <p>Discover extraordinary properties in Miami's most exclusive neighborhoods with unparalleled service and expertise</p>
+            <a href="#contact" class="cta-button">Begin Your Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-subtitle fade-in">Excellence</div>
+            <h2 class="section-title fade-in">About Elite Miami</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Redefining Luxury Real Estate</h3>
+                    <p>For over two decades, Elite Miami has been the trusted name in luxury real estate, representing the most discerning clients and prestigious properties in South Florida. Our commitment to excellence, discretion, and personalized service has established us as the premier choice for luxury real estate transactions.</p>
+                    <p>We specialize in ultra-high-net-worth clients, offering bespoke services that go beyond traditional real estate. From private viewings to comprehensive market intelligence, we provide an unmatched level of sophistication and professionalism.</p>
+                    <p>Our exclusive network and deep market knowledge ensure that our clients have access to the most coveted properties and investment opportunities in Miami's dynamic luxury market.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <div style="color: var(--gold-accent);">🏛️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-subtitle fade-in">Excellence</div>
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏠</div>
+                    <h3>Luxury Residential Sales</h3>
+                    <p>Representing the finest estates, penthouses, and luxury condominiums across Miami-Dade County. Expert pricing strategies and marketing for properties exceeding $1 million.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💼</div>
+                    <h3>Investment Advisory</h3>
+                    <p>Strategic investment guidance for high-net-worth individuals seeking to build prestigious real estate portfolios in Miami's most appreciating markets.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌊</div>
+                    <h3>Waterfront Estates</h3>
+                    <p>Exclusive representation of Miami's most coveted waterfront properties, from Biscayne Bay mansions to oceanfront penthouses in prestigious buildings.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔐</div>
+                    <h3>Private Client Services</h3>
+                    <p>Confidential representation for celebrities, executives, and ultra-high-net-worth individuals requiring discretion and specialized service protocols.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>Market Intelligence</h3>
+                    <p>Comprehensive market analysis and forecasting for luxury segments, providing clients with strategic insights for informed decision-making.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⭐</div>
+                    <h3>Concierge Services</h3>
+                    <p>Full-service lifestyle management including property management, interior design coordination, and relocation services for seamless transitions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-subtitle fade-in">Connect</div>
+            <h2 class="section-title fade-in">Contact Elite Miami</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Exclusive Consultation</h3>
+                    <p>Schedule a private consultation to discuss your luxury real estate needs. Our team provides personalized service with the utmost discretion and professionalism.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-content">
+                            <strong>Private Line</strong><br>
+                            (305) 555-ELITE
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-content">
+                            <strong>Email</strong><br>
+                            concierge@elitemiami.com
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-content">
+                            <strong>Private Office</strong><br>
+                            701 Brickell Avenue, Suite 1550<br>
+                            Miami, FL 33131
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form action="https://formspree.io/f/your-form-id" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">Service Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select Service</option>
+                                <option value="luxury-buying">Luxury Property Acquisition</option>
+                                <option value="luxury-selling">Luxury Property Sale</option>
+                                <option value="investment">Investment Advisory</option>
+                                <option value="waterfront">Waterfront Properties</option>
+                                <option value="private-client">Private Client Services</option>
+                                <option value="consultation">Market Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Please describe your luxury real estate requirements..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Private Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Elite Miami Realty. All rights reserved. | Licensed Real Estate Brokerage | Equal Housing Opportunity</p>
+        </div>
+    </footer>
+
+    <!-- Chatbase Script -->
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "YOUR_CHATBOT_ID_HERE", // Replace with your actual Chatbase chatbot ID
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="YOUR_CHATBOT_ID_HERE"
+        domain="www.chatbase.co"
+        defer>
+    </script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(212, 175, 55, 0.1)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission handling with premium feedback
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending Message...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
