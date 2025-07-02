@@ -523,51 +523,95 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+1 (305) 555-0123</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@elitemiamirealty.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>1234 Brickell Avenue, Miami, FL 33131</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Mon - Fri: 9:00 AM - 7:00 PM<br>Sat - Sun: 10:00 AM - 5:00 PM</span>
-                    </div>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/xldnzqen" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message (Optional)</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your real estate needs..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (305) 555-0123</span>
         </div>
-    </section>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>info@elitemiamirealty.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>1234 Brickell Avenue, Miami, FL 33131</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon - Fri: 9:00 AM - 7:00 PM<br>Sat - Sun: 10:00 AM - 5:00 PM</span>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" action="https://formspree.io/f/xldnzqen" method="POST">
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message (Optional)</label>
+          <textarea id="message" name="message" placeholder="Tell us about your real estate needs..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+        <div id="form-status" style="margin-top: 1rem; font-weight: bold; font-size: 1rem;"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript para manejar el envío sin redirección -->
+<script>
+  const form = document.querySelector(".contact-form");
+  const status = document.querySelector("#form-status");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const action = form.getAttribute("action");
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        status.innerHTML = "✅ Your message has been sent!";
+        status.style.color = "green";
+        form.reset();
+      } else {
+        const resData = await response.json();
+        if (resData.errors) {
+          status.innerHTML = "❌ " + resData.errors.map(error => error.message).join(", ");
+        } else {
+          status.innerHTML = "❌ Something went wrong. Please try again.";
+        }
+        status.style.color = "red";
+      }
+    } catch (error) {
+      status.innerHTML = "❌ Network error. Please try again later.";
+      status.style.color = "red";
+    }
+  });
+</script>
 
     <!-- Footer -->
     <footer>
